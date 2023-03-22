@@ -125,6 +125,7 @@ int main()
     encodeData(data, key);
 
     cout << "\nReceiver side..." << endl;
+    cout << endl;
     receiver(data + mod2div(data + std::string(key.size() - 1, '0'), key), key);
 
     return 0;
