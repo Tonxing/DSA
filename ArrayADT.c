@@ -86,6 +86,59 @@ int BinarySearch(struct Array arr, int key)
     return -1;
 }
 
+int Get(struct Array arr, int index)
+{
+    if (index >= 0 && index < arr.length)
+        return arr.A[index];
+    return -1;
+}
+
+void Set(struct Array arr, int index, int x)
+{
+    if (index >= 0 && index < arr.length)
+    {
+        arr.A[index] = x;
+    }
+}
+
+int Max(struct Array arr)
+{
+    int max = arr.A[0];
+    for (i = 1; i < arr.length; i++)
+    {
+        if (arr.A[i] > max)
+            max = arr.A[i];
+    }
+    return max;
+}
+
+int Min(struct Array arr)
+{
+    int min = arr.A[0];
+    for (i = 1; i < arr.length; i++)
+    {
+        if (arr.A[i] < min)
+            min = arr.A[i];
+    }
+    return min;
+}
+
+int Sum(struct Array arr)
+{
+    int total = 0;
+    for (i = 0; i < arr.length; i++)
+    {
+        total += arr.A[i];
+    }
+    return total;
+}
+
+float Avg(struct Array arr)
+{
+    int total = Sum(arr);
+    return (float)total / arr.length;
+}
+
 int main()
 {
     int n, s, element, index;
@@ -114,6 +167,13 @@ int main()
         printf("\n4. Delete element.");
         printf("\n5. Search element using LinearSearch.");
         printf("\n6. Search element using BinarySearch.");
+        printf("\n7. Get element at a particular index.");
+        printf("\n8. Set element at a particular index.");
+        printf("\n9. Get maximum element.");
+        printf("\n10. Get minimum element.");
+        printf("\n11. Get sum of all elements.");
+        printf("\n12. Get average.");
+
         printf("\nEnter choice: ");
         scanf("%d", &s);
 
@@ -157,6 +217,39 @@ int main()
             scanf("%d", &element);
             index = BinarySearch(arr, element);
             printf("Element is found at index %d", index);
+            break;
+
+        case 7:
+            printf("Enter the index to get element: ");
+            scanf("%d", &index);
+            element = Get(arr, index);
+            printf("Element found is %d", element);
+            break;
+
+        case 8:
+            printf("Enter the index and element to set : ");
+            scanf("%d%d", &index, &element);
+            Set(arr, index, element);
+            printf("Element is set at index %d", index);
+            break;
+
+        case 9:
+            element = Max(arr);
+            printf("Maximum element is %d", element);
+            break;
+
+        case 10:
+            element = Min(arr);
+            printf("Minimum element is %d", element);
+            break;
+
+        case 11:
+            element = Sum(arr);
+            printf("Sum of all elements is %d", element);
+            break;
+
+        case 12:
+            printf("Average of all the elements: %.2f", Avg(arr));
             break;
 
         default:
