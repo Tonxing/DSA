@@ -166,6 +166,6 @@ int main()
         printf("\nDo you wish to continue? Y/N:\n");
         scanf(" %c", &choice);
     } while (choice == 'Y' || choice == 'y');
-
+    printf("changes made");
     return 0;
 }
