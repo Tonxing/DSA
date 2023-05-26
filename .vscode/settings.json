@@ -4,6 +4,7 @@
         "stdio.h": "c",
         "string.h": "c",
         "xlocale": "c",
-        "xstring": "c"
+        "xstring": "c",
+        "iostream": "cpp"
     }
 }
