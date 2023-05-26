@@ -16,7 +16,6 @@ int i, j, k;
 
 void Display(struct Array arr)
 {
-    int i;
     printf("Elements are\n");
     for (i = 0; i < arr.length; i++)
     {
@@ -270,21 +269,11 @@ void Separation(struct Array *arr)
 
 struct Array *Merge(struct Array *arr, struct Array *newarr)
 {
-    i = 0, j = 0, k = 0;
+    i = j = k = 0;
 
     struct Array *mergedarr = (struct Array *)malloc(sizeof(struct Array));
     printf("Enter size of the merged array: ");
     scanf("%d", &mergedarr->size);
-
-    if (isSorted(*arr) == 0)
-    {
-        SortArray(arr);
-    }
-
-    if (isSorted(*newarr) == 0)
-    {
-        SortArray(newarr);
-    }
 
     while (i < arr->length && j < newarr->length)
     {
@@ -298,6 +287,8 @@ struct Array *Merge(struct Array *arr, struct Array *newarr)
     for (; j < newarr->length; j++)
         mergedarr->A[k++] = newarr->A[j];
     mergedarr->length = arr->length + newarr->length;
+
+    return mergedarr;
 }
 
 int main()
@@ -463,8 +454,7 @@ int main()
             break;
 
         case 22:
-
-            printf("For th second array:\n");
+            printf("For the second array:\n");
             printf("Enter size of the array: ");
             scanf("%d", &newarr.size);
             newarr.A = (int *)malloc(newarr.size * sizeof(int));
@@ -472,13 +462,13 @@ int main()
 
             printf("Enter length: ");
             scanf("%d", &m);
+            newarr.length = m;
 
             printf("Enter all Elements\n");
             for (i = 0; i < m; i++)
             {
                 scanf("%d", &newarr.A[i]);
             }
-            newarr.length = m;
 
             mergedarr = Merge(&arr, &newarr);
             Display(*mergedarr);
