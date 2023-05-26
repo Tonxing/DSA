@@ -351,10 +351,8 @@ int main()
         switch (s)
         {
         case 1:
-        {
             Display(arr);
             break;
-        }
 
         case 2:
             printf("Enter the element to append: ");
